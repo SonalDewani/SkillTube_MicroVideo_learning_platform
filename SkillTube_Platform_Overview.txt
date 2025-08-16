@@ -1,0 +1,190 @@
+
+SkillTube Platform
+=================
+Software Requirements Specification (SRS)
+
+1. Introduction
+---------------
+1.1 Purpose
+   SkillTube is a web-based platform for users to learn and teach any subject using short videos. The platform supports both students and teachers, enabling easy sharing and consumption of educational content.
+
+1.2 Scope
+   The system will allow users to register, create profiles, upload and watch videos, interact via comments and likes, enroll in courses, and receive notifications. Admins will manage content and users.
+
+1.3 Definitions, Acronyms, and Abbreviations
+   - SRS: Software Requirements Specification
+   - JWT: JSON Web Token
+   - API: Application Programming Interface
+
+1.4 References
+   - RESTful API design best practices
+   - draw.io, Lucidchart (for diagrams)
+
+2. Overall Description
+----------------------
+2.1 Product Perspective
+   SkillTube is a standalone web application built using the MERN stack:
+   - MongoDB: Database for persistent storage
+   - Express.js: Backend web framework
+   - React.js: Frontend user interface
+   - Node.js: Server runtime environment
+   The platform consists of client and server components.
+
+2.2 Product Functions
+   - User registration, authentication, and profile management
+   - Video upload, browsing, and playback
+   - Commenting, liking, and reporting videos
+   - Enrollment in courses/videos
+   - Notifications for user activity
+   - Admin management of users, videos, and reports
+
+2.3 User Classes and Characteristics
+   - Student: Watches videos, enrolls, comments, likes
+   - Teacher: Uploads videos, manages content, interacts
+   - Admin: Manages users, content, and reports
+
+2.4 Operating Environment
+   - Web browsers (Chrome, Firefox, Edge)
+   - Frontend: React.js
+   - Backend: Node.js with Express.js
+   - Database: MongoDB
+
+2.5 Design and Implementation Constraints
+   - MERN stack (MongoDB, Express.js, React.js, Node.js)
+   - Secure password storage
+   - Responsive UI
+   - RESTful API
+
+2.6 User Documentation
+   - Online help and FAQ
+   - User guides for students, teachers, and admins
+
+2.7 Assumptions and Dependencies
+   - Users have internet access
+   - Teachers provide original content
+
+3. System Features
+------------------
+3.1 User Registration & Authentication
+   - Register as student or teacher
+   - Login/logout
+   - Email verification (optional)
+
+3.2 Profile Management
+   - Edit profile, bio, picture, social links
+
+3.3 Video Management
+   - Upload, edit, delete videos (teacher)
+   - Browse/search videos
+   - Watch videos
+
+3.4 Interaction
+   - Like, comment, report videos
+   - Enroll/follow teachers
+   - Notifications for activity
+
+3.5 Admin Panel
+   - Manage users, videos, categories, reports
+
+3.6 Additional Features
+   - Playlists/series
+   - Direct messaging
+   - Gamification (badges, points)
+   - Analytics dashboard
+
+4. External Interface Requirements
+----------------------------------
+4.1 User Interfaces
+   - Web-based UI for all user roles
+   - Responsive design for mobile and desktop
+
+4.2 Hardware Interfaces
+   - Standard PC or mobile device
+
+4.3 Software Interfaces
+   - RESTful API endpoints
+   - Database connection
+
+4.4 Communications Interfaces
+   - HTTPS for secure communication
+
+5. System API Flow
+------------------
+5.1 Authentication & User Management
+   - POST /api/auth/register
+   - POST /api/auth/login
+   - GET /api/users/:id
+   - PUT /api/users/:id
+
+5.2 Video Management
+   - GET /api/videos
+   - GET /api/videos/:id
+   - POST /api/videos
+   - PUT /api/videos/:id
+   - DELETE /api/videos/:id
+
+5.3 Category & Tag Management
+   - GET /api/categories
+   - GET /api/tags
+
+5.4 Comments & Likes
+   - GET /api/videos/:id/comments
+   - POST /api/videos/:id/comments
+   - POST /api/videos/:id/like
+   - DELETE /api/videos/:id/like
+
+5.5 Enrollment & Notifications
+   - POST /api/videos/:id/enroll
+   - GET /api/users/:id/enrollments
+   - GET /api/users/:id/notifications
+
+5.6 Reports & Admin
+   - POST /api/videos/:id/report
+   - GET /api/admin/reports
+   - GET /api/admin/users
+   - GET /api/admin/videos
+
+5.7 Example API Flow (User Journey)
+   1. User registers → /api/auth/register
+   2. User logs in → /api/auth/login
+   3. User browses videos → /api/videos?category=Programming
+   4. User watches a video → /api/videos/:id
+   5. User likes/comments → /api/videos/:id/like, /api/videos/:id/comments
+   6. User enrolls in a video → /api/videos/:id/enroll
+   7. Teacher uploads a video → /api/videos (POST)
+   8. Admin reviews reports → /api/admin/reports
+
+6. Non-Functional Requirements
+------------------------------
+6.1 Performance
+   - Fast response times (<2s for most actions)
+   - Scalable to thousands of users
+
+6.2 Security
+   - Secure password storage (hashing)
+   - HTTPS for all data transfer
+   - Input validation and sanitization
+
+6.3 Reliability & Availability
+   - 99.9% uptime
+   - Automated backups
+
+6.4 Maintainability
+   - Modular codebase
+   - API documentation
+
+6.5 Portability
+   - Compatible with major browsers
+
+7. Appendices
+-------------
+7.1 Data Model Overview
+   - User, Video, Category, Tag, Comment, Like, Enrollment, Notification, Report, Admin
+
+7.2 Future Enhancements
+   - AI-powered recommendations
+   - Live streaming
+   - Multi-language support
+
+---
+End of SRS Document
