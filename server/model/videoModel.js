@@ -1,3 +1,4 @@
+const mongoose = require("mongoose");
 
 const videoSchema = mongoose.Schema({
     title: { type: String, required: true },
@@ -10,7 +11,9 @@ const videoSchema = mongoose.Schema({
     views: { type: Number, default: 0 },
     duration: { type: Number, required: true },
     category: { type: String, required: true }
-});
+},
+{ timestamps: true }
+);
 
 
 

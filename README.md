@@ -30,15 +30,17 @@ SkillTube is a web-based platform for users to learn and teach any subject using
 
 
 ## API Endpoints (Sample)
-- POST /api/auth/register
-- POST /api/auth/login
+- POST /api/auth/register (all users)
+- POST /api/auth/login (all users)
+- GET /api//user/me
 - GET /api/users/:id
-- POST /api/videos
-- GET /api/videos/:id/comments
-- POST /api/videos/:id/like
-- POST /api/videos/:id/enroll
-- GET /api/users/:id/notifications
-- POST /api/videos/:id/report
+- GET /api/videos  (all users)
+- POST /api/videos (teacher)
+- PUT /api/videos/:id/delete (teacher,  admin)
+- GET /api/videos/:id/comments (all users)
+- POST /api/videos/:id/like (all users)
+- GET /api/users/:id/notifications (all users)
+- POST /api/videos/:id/report (all admiin)
 
 ## Future Enhancements
 - AI-powered recommendations
