@@ -1,20 +1,27 @@
-const dbConnect=require("./config/database");
-const dotenv= require("dotenv");
-const express = require("express");
-const mongoose = require("mongoose");
-const bcrypt = require("bcryptjs");
-const cookie_parser = require("cookie-parser");
+import express from "express";
+import mongoose from "mongoose";
+import bcrypt from "bcryptjs";
+import cookieParser from "cookie-parser";
+import dotenv from "dotenv";
+
+import dbConnect from "./config/database.js";
+import videoRoutes from "./routes/videoRoutes.js";
+import authRoutes from "./routes/authRoutes.js";
 
 dotenv.config();
 dbConnect();
+
 const app = express();
 
+// Middleware
 app.use(express.json());
+app.use(cookieParser());
 
-app.use(cookie_parser());
+// Routes
+app.use("/api/videos", videoRoutes);
+app.use("/api/auth", authRoutes);
 
-app.use('/api/auth', require('./routes/authRoutes'));
-
+// Start Server
 app.listen(process.env.PORT, () => {
-    console.log(`Server is running on port ${process.env.PORT}`);
+  console.log(`Server running on port ${process.env.PORT}`);
 });

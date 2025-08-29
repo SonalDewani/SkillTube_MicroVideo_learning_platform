@@ -1,0 +1,124 @@
+post ->http://localhost:5000/api/auth/register
+body->
+{
+  "username": "raj",
+  "email": "raj@example.com",
+  "password": "secure123",
+  "phone":9011959051,
+  "role": "teacher"
+}
+result->
+{
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4YjE0YzNjNGQzMzgyYjEwOGIzZTUzNiIsInJvbGUiOiJ0ZWFjaGVyIiwiaWF0IjoxNzU2NDQ5ODUyLCJleHAiOjE3NTY1MzYyNTJ9.1O-eOWJp19yAXf4zx6PE7oWZ7sYC9sT0MeU6y5_UVg0",
+  "user": {
+    "username": "raj",
+    "email": "raj@example.com",
+    "phone": "9011959051",
+    "password": "$2b$10$LDTxo2iqceO7ifNQICvnI..qx1eXFVyEKYQXhGTpf6xj9WsNFafmu",
+    "role": "teacher",
+    "profilePicture": "",
+    "bio": "",
+    "_id": "68b14c3c4d3382b108b3e536",
+    "createdAt": "2025-08-29T06:44:12.806Z",
+    "updatedAt": "2025-08-29T06:44:12.806Z",
+    "__v": 0
+  }
+}
+
+post-> http://localhost:5000/api/auth/login
+body=>
+{
+ 
+  "email": "raj@example.com",
+  "password": "secure123"
+
+}
+result->
+{
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4YjE0YzNjNGQzMzgyYjEwOGIzZTUzNiIsInJvbGUiOiJ0ZWFjaGVyIiwiaWF0IjoxNzU2NDUwMDY5LCJleHAiOjE3NTY1MzY0Njl9.AzikgdhiDhjuqTB52xZ0aBM0h-sxs41IYm5ooLtkDrg",
+  "user": {
+    "_id": "68b14c3c4d3382b108b3e536",
+    "username": "raj",
+    "email": "raj@example.com",
+    "phone": "9011959051",
+    "password": "$2b$10$LDTxo2iqceO7ifNQICvnI..qx1eXFVyEKYQXhGTpf6xj9WsNFafmu",
+    "role": "teacher",
+    "profilePicture": "",
+    "bio": "",
+    "createdAt": "2025-08-29T06:44:12.806Z",
+    "updatedAt": "2025-08-29T06:44:12.806Z",
+    "__v": 0
+  }
+}
+
+get->http://localhost:5000/api/auth/me
+token 
+result->
+{
+  "id": "68b14c3c4d3382b108b3e536",
+  "role": "teacher",
+  "iat": 1756450069,
+  "exp": 1756536469
+}
+
+post->http://localhost:5000/api/auth/logout
+body-> token
+{
+ 
+  "email": "raj@example.com",
+  "password": "secure123"
+
+}
+result->
+{
+  "message": "Logged out successfully"
+}
+
+get-> http://localhost:5000/api/videos/
+result->
+{
+  "message": "No videos found",
+  "data": []
+}
+
+post->
+body->http://localhost:5000/api/videos/
+{
+  "title": "JavaScript for Beginners",
+  "description": "Learn the basics of JavaScript programming.",
+  "url": "https://res.cloudinary.com/demo/video/upload/js_intro.mp4",
+  "thumbnail": "https://res.cloudinary.com/demo/image/upload/js_thumb.jpg",
+  "category": "programming",
+  "tags": ["javascript", "basics", "frontend"],
+  "duration": 1500
+}
+result->
+{
+  "title": "JavaScript for Beginners",
+  "description": "Learn the basics of JavaScript programming.",
+  "url": "https://res.cloudinary.com/demo/video/upload/js_intro.mp4",
+  "thumbnail": "https://res.cloudinary.com/demo/image/upload/js_thumb.jpg",
+  "uploadedBy": "68b14c3c4d3382b108b3e536",
+  "tags": [
+    "javascript",
+    "basics",
+    "frontend"
+  ],
+  "views": 0,
+  "duration": 1500,
+  "category": "programming",
+  "_id": "68b14f3e4d3382b108b3e53b",
+  "createdAt": "2025-08-29T06:57:02.679Z",
+  "updatedAt": "2025-08-29T06:57:02.679Z",
+  "__v": 0
+}
+
+Get All Videos (GET /api/videos)
+
+👉 No body required. You can test with queries:
+
+/api/videos?category=programming
+
+/api/videos?tag=frontend
+
+/api/videos?q=javascript
