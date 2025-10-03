@@ -1,0 +1,166 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* YouTube-inspired dark theme */
+    --background: 0 0% 9%;
+    --foreground: 0 0% 98%;
+    
+    /* Card system with dark theme */
+    --card: 0 0% 11%;
+    --card-foreground: 0 0% 95%;
+    --card-hover: 0 0% 13%;
+    
+    /* YouTube red branding */
+    --brand: 0 100% 50%;
+    --brand-hover: 0 100% 45%;
+    --brand-foreground: 0 0% 100%;
+    
+    /* Primary system */
+    --primary: 0 100% 50%;
+    --primary-foreground: 0 0% 100%;
+    --primary-hover: 0 100% 45%;
+    
+    /* Secondary grays */
+    --secondary: 0 0% 15%;
+    --secondary-foreground: 0 0% 90%;
+    --secondary-hover: 0 0% 18%;
+    
+    /* Muted elements */
+    --muted: 0 0% 13%;
+    --muted-foreground: 0 0% 65%;
+    
+    /* Accent colors */
+    --accent: 0 0% 13%;
+    --accent-foreground: 0 0% 90%;
+    
+    /* Interactive elements */
+    --hover: 0 0% 15%;
+    --hover-strong: 0 0% 18%;
+    
+    /* Borders and inputs */
+    --border: 0 0% 20%;
+    --input: 0 0% 13%;
+    --input-border: 0 0% 25%;
+    --ring: 0 100% 50%;
+    
+    /* Destructive */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    
+    /* Popover */
+    --popover: 0 0% 11%;
+    --popover-foreground: 0 0% 95%;
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(0 100% 50%), hsl(15 100% 55%));
+    --gradient-card: linear-gradient(145deg, hsl(0 0% 11%), hsl(0 0% 13%));
+    --gradient-hover: linear-gradient(145deg, hsl(0 0% 13%), hsl(0 0% 15%));
+    
+    /* Shadows */
+    --shadow-card: 0 4px 12px hsl(0 0% 0% / 0.15);
+    --shadow-hover: 0 8px 25px hsl(0 0% 0% / 0.25);
+    --shadow-brand: 0 4px 20px hsl(0 100% 50% / 0.3);
+    
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    
+    --radius: 0.75rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-medium;
+    font-family: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+  
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    @apply bg-background;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    @apply bg-muted rounded-full;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-muted-foreground;
+  }
+}
+
+@layer components {
+  /* Video card component */
+  .video-card {
+    @apply bg-card rounded-xl overflow-hidden shadow-[var(--shadow-card)] transition-all duration-300;
+    background: var(--gradient-card);
+  }
+  
+  .video-card:hover {
+    @apply shadow-[var(--shadow-hover)] transform scale-[1.02];
+    background: var(--gradient-hover);
+  }
+  
+  /* Brand button */
+  .btn-brand {
+    @apply bg-brand text-brand-foreground font-semibold px-6 py-3 rounded-lg;
+    @apply transition-all duration-300 shadow-[var(--shadow-brand)];
+    background: var(--gradient-primary);
+  }
+  
+  .btn-brand:hover {
+    @apply bg-brand-hover transform scale-105;
+  }
+  
+  /* Search input */
+  .search-input {
+    @apply bg-input border border-input-border text-foreground px-4 py-2 rounded-full;
+    @apply focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent;
+    @apply transition-all duration-300;
+  }
+  
+  /* Navigation hover effect */
+  .nav-hover {
+    @apply transition-all duration-300 hover:bg-hover rounded-lg px-3 py-2;
+  }
+  
+  /* Smooth fade animations */
+  .fade-in {
+    animation: fadeIn 0.5s ease-out;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  /* Pulse animation for loading */
+  .pulse-brand {
+    animation: pulseBrand 2s infinite;
+  }
+  
+  @keyframes pulseBrand {
+    0%, 100% { box-shadow: 0 0 0 0 hsl(var(--brand) / 0.7); }
+    70% { box-shadow: 0 0 0 10px hsl(var(--brand) / 0); }
+  }
+}
